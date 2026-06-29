@@ -17,6 +17,9 @@ class TagSeeder extends Seeder
             ['name' => 'backend', 'color' => '#8b5cf6'],
             ['name' => 'frontend', 'color' => '#ec4899'],
             ['name' => 'documentation', 'color' => '#06b6d4'],
-        ])->each(fn (array $data) => Tag::create($data));
+        ])->each(fn (array $data) => Tag::firstOrCreate(
+            ['name' => $data['name']],
+            ['color' => $data['color']],
+        ));
     }
 }

@@ -13,6 +13,9 @@ class UserSeeder extends Seeder
             ['name' => 'Test User', 'email' => 'test@example.com'],
             ['name' => 'Alex Doe', 'email' => 'alex@example.com'],
             ['name' => 'Sam Roe', 'email' => 'sam@example.com'],
-        ])->each(fn (array $data) => User::factory()->create($data));
+        ])->each(fn (array $data) => User::firstOrCreate(
+            ['email' => $data['email']],
+            ['name' => $data['name'], 'password' => 'password', 'email_verified_at' => now()],
+        ));
     }
 }
