@@ -38,13 +38,17 @@
                                     <td class="px-6 py-4 text-gray-600">{{ $project->issues_count }}</td>
                                     <td class="px-6 py-4 text-gray-600">{{ $project->deadline?->format('M j, Y') ?? '—' }}</td>
                                     <td class="px-6 py-4 text-right space-x-3 whitespace-nowrap">
-                                        <a href="{{ route('projects.edit', $project) }}" class="text-gray-500 hover:text-gray-700">Edit</a>
-                                        <form method="POST" action="{{ route('projects.destroy', $project) }}" class="inline"
-                                              onsubmit="return confirm('Delete this project?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="text-red-500 hover:text-red-700">Delete</button>
-                                        </form>
+                                        @can('update', $project)
+                                            <a href="{{ route('projects.edit', $project) }}" class="text-gray-500 hover:text-gray-700">Edit</a>
+                                            <form method="POST" action="{{ route('projects.destroy', $project) }}" class="inline"
+                                                  onsubmit="return confirm('Delete this project?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="text-red-500 hover:text-red-700">Delete</button>
+                                            </form>
+                                        @else
+                                            <span class="text-gray-300">—</span>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

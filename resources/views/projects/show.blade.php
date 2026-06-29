@@ -24,7 +24,9 @@
                             <div><dt class="text-gray-500">Deadline</dt><dd class="text-gray-800">{{ $project->deadline?->format('M j, Y') ?? '—' }}</dd></div>
                         </dl>
                     </div>
-                    <a href="{{ route('projects.edit', $project) }}" class="text-gray-500 hover:text-gray-700">Edit</a>
+                    @can('update', $project)
+                        <a href="{{ route('projects.edit', $project) }}" class="text-gray-500 hover:text-gray-700">Edit</a>
+                    @endcan
                 </div>
             </div>
 
