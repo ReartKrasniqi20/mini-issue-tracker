@@ -46,8 +46,6 @@ class Issue extends Model
         return $this->belongsToMany(User::class);
     }
 
-    // ---- Query scopes: drive the issue filters and the search bonus ----
-
     public function scopeStatus(Builder $query, ?string $status): Builder
     {
         return $query->when($status, fn (Builder $q) => $q->where('status', $status));
