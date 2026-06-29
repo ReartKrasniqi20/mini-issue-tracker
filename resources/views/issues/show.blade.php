@@ -32,8 +32,13 @@
                 <p class="text-gray-700 whitespace-pre-line">{{ $issue->description ?: 'No description.' }}</p>
 
                 <div>
-                    <div class="text-xs font-medium text-gray-500 uppercase mb-1">Tags</div>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex items-center justify-between mb-1">
+                        <div class="text-xs font-medium text-gray-500 uppercase">Tags</div>
+                        <x-secondary-button type="button" x-data="" x-on:click.prevent="$dispatch('open-modal', 'manage-tags')">
+                            Manage tags
+                        </x-secondary-button>
+                    </div>
+                    <div id="issue-tags" class="flex flex-wrap gap-2">
                         @forelse ($issue->tags as $tag)
                             <x-tag-badge :tag="$tag" />
                         @empty
@@ -73,4 +78,6 @@
             </div>
         </div>
     </div>
+
+    @include('issues._tag-manager')
 </x-app-layout>

@@ -64,7 +64,12 @@ class IssueController extends Controller
 
         $comments = $issue->comments()->latest()->paginate(5);
 
-        return view('issues.show', compact('project', 'issue', 'comments'));
+        return view('issues.show', [
+            'project' => $project,
+            'issue' => $issue,
+            'comments' => $comments,
+            'allTags' => Tag::orderBy('name')->get(),
+        ]);
     }
 
     public function edit(Project $project, Issue $issue): View
