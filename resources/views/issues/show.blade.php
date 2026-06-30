@@ -48,8 +48,13 @@
                 </div>
 
                 <div>
-                    <div class="text-xs font-medium text-gray-500 uppercase mb-1">Members</div>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex items-center justify-between mb-1">
+                        <div class="text-xs font-medium text-gray-500 uppercase">Members</div>
+                        <x-secondary-button type="button" x-data="" x-on:click.prevent="$dispatch('open-modal', 'manage-members')">
+                            Manage members
+                        </x-secondary-button>
+                    </div>
+                    <div id="issue-members" class="flex flex-wrap gap-2">
                         @forelse ($issue->members as $member)
                             <span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-700">{{ $member->name }}</span>
                         @empty
@@ -88,4 +93,5 @@
     </div>
 
     @include('issues._tag-manager')
+    @include('issues._members')
 </x-app-layout>

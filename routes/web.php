@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IssueCommentController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\IssueMemberController;
 use App\Http\Controllers\IssueTagController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -28,6 +29,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('issues/{issue}/comments', [IssueCommentController::class, 'index'])->name('issues.comments.index');
     Route::post('issues/{issue}/comments', [IssueCommentController::class, 'store'])->name('issues.comments.store');
+
+    Route::post('issues/{issue}/members', [IssueMemberController::class, 'store'])->name('issues.members.store');
+    Route::delete('issues/{issue}/members/{user}', [IssueMemberController::class, 'destroy'])->name('issues.members.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

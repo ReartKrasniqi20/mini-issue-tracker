@@ -9,13 +9,15 @@ use App\Http\Requests\UpdateIssueRequest;
 use App\Models\Issue;
 use App\Models\Project;
 use App\Models\Tag;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class IssueController extends Controller
 {
-    public function index(Request $request, Project $project): View
+    public function index(Request $request, Project $project): View|JsonResponse
     {
         $issues = $project->issues()
             ->with('tags')
@@ -27,6 +29,12 @@ class IssueController extends Controller
             ->latest()
             ->paginate(10)
             ->withQueryString();
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'html' => view('issues._list', compact('issues', 'project'))->render(),
+            ]);
+        }
 
         return view('issues.index', [
             'project' => $project,
@@ -66,6 +74,7 @@ class IssueController extends Controller
             'project' => $project,
             'issue' => $issue,
             'allTags' => Tag::orderBy('name')->get(),
+            'allUsers' => User::orderBy('name')->get(),
         ]);
     }
 

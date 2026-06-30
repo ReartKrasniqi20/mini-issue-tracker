@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('projects.issues.index', $project) }}"
+<form method="GET" action="{{ route('projects.issues.index', $project) }}" id="issue-filters"
       class="bg-white shadow-sm sm:rounded-lg p-4 flex flex-wrap items-end gap-4">
     <div>
         <x-input-label for="q" value="Search" />
