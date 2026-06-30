@@ -11,6 +11,13 @@ class StoreCommentRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'author_name' => $this->user()->name,
+        ]);
+    }
+
     public function rules(): array
     {
         return [

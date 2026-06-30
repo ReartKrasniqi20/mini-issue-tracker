@@ -64,17 +64,15 @@
 
                 <form id="comment-form" class="space-y-3 mb-6">
                     <div>
-                        <x-input-label for="author_name" value="Your name" />
-                        <x-text-input id="author_name" name="author_name" type="text" class="mt-1 block w-full" />
-                        <p class="mt-1 text-sm text-red-600 hidden" data-error="author_name"></p>
-                    </div>
-                    <div>
-                        <x-input-label for="body" value="Comment" />
+                        <x-input-label for="body" value="Add a comment" />
                         <textarea id="body" name="body" rows="3"
                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                         <p class="mt-1 text-sm text-red-600 hidden" data-error="body"></p>
                     </div>
-                    <x-primary-button>Add comment</x-primary-button>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-400">Commenting as {{ auth()->user()->name }}</span>
+                        <x-primary-button>Add comment</x-primary-button>
+                    </div>
                 </form>
 
                 <div id="comments-list" class="space-y-4"></div>

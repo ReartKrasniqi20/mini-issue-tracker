@@ -54,7 +54,6 @@ export function initComments() {
             const data = await request(`/issues/${issueId}/comments`, {
                 method: 'POST',
                 body: JSON.stringify({
-                    author_name: form.author_name.value,
                     body: form.body.value,
                 }),
             });
