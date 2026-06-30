@@ -1,6 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Project</h2>
+        <div class="space-y-2">
+            <x-back-link :href="route('projects.index')">Back to projects</x-back-link>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Project</h2>
+        </div>
     </x-slot>
 
     <div class="py-12">

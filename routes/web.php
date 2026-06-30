@@ -10,7 +10,7 @@ use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('tags', [TagController::class, 'index'])->name('tags.index');
     Route::post('tags', [TagController::class, 'store'])->name('tags.store');
+    Route::get('tags/{tag}/edit', [TagController::class, 'edit'])->name('tags.edit');
+    Route::put('tags/{tag}', [TagController::class, 'update'])->name('tags.update');
+    Route::delete('tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
 
     Route::post('issues/{issue}/tags', [IssueTagController::class, 'store'])->name('issues.tags.store');
     Route::delete('issues/{issue}/tags/{tag}', [IssueTagController::class, 'destroy'])->name('issues.tags.destroy');

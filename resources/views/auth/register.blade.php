@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Create your account</h2>
+        <p class="mt-1 text-sm text-gray-500">Start tracking issues in minutes.</p>
+    </div>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

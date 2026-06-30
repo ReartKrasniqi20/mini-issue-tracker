@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Projects') }}</h2>
             <a href="{{ route('projects.create') }}">
-                <x-primary-button>New Project</x-primary-button>
+                <x-primary-button><x-icon name="plus" class="mr-1.5" />New Project</x-primary-button>
             </a>
         </div>
     </x-slot>

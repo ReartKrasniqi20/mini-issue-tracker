@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Welcome back</h2>
+        <p class="mt-1 text-sm text-gray-500">Sign in to your account to continue.</p>
+    </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +49,13 @@
             </x-primary-button>
         </div>
     </form>
+
+    @if (Route::has('register'))
+        <div class="mt-6 text-center text-sm text-gray-600">
+            {{ __("Don't have an account?") }}
+            <a class="underline text-gray-900 hover:text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                {{ __('Register') }}
+            </a>
+        </div>
+    @endif
 </x-guest-layout>

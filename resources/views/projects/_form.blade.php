@@ -1,6 +1,6 @@
 @php($editing = $project->exists)
 
-<form method="POST" action="{{ $editing ? route('projects.update', $project) : route('projects.store') }}" class="space-y-6">
+<form method="POST" action="{{ $editing ? route('projects.update', $project) : route('projects.store') }}" class="space-y-6" novalidate>
     @csrf
     @if ($editing)
         @method('PUT')
@@ -9,14 +9,14 @@
     <div>
         <x-input-label for="name" value="Name" />
         <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
-                      :value="old('name', $project->name)" required autofocus />
+                      :value="old('name', $project->name)" placeholder="e.g. Marketing Website" required autofocus />
         <x-input-error :messages="$errors->get('name')" class="mt-2" />
     </div>
 
     <div>
         <x-input-label for="description" value="Description" />
-        <textarea id="description" name="description" rows="4"
-                  class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('description', $project->description) }}</textarea>
+        <textarea id="description" name="description" rows="4" placeholder="What is this project about?"
+                  class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm @error('description') input-invalid @enderror">{{ old('description', $project->description) }}</textarea>
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
     </div>
 

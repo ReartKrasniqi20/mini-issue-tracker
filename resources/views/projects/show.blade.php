@@ -1,10 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
+        <x-back-link :href="route('projects.index')" class="mb-2">Back to projects</x-back-link>
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $project->name }}</h2>
             <div class="flex items-center gap-3">
                 <a href="{{ route('projects.issues.index', $project) }}"><x-secondary-button>Manage issues</x-secondary-button></a>
-                <a href="{{ route('projects.issues.create', $project) }}"><x-primary-button>New issue</x-primary-button></a>
+                <a href="{{ route('projects.issues.create', $project) }}"><x-primary-button><x-icon name="plus" class="mr-1.5" />New issue</x-primary-button></a>
             </div>
         </div>
     </x-slot>

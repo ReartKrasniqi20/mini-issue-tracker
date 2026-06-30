@@ -5,6 +5,7 @@ function clearErrors(form) {
         el.textContent = '';
         el.classList.add('hidden');
     });
+    form.querySelectorAll('.input-invalid').forEach((el) => el.classList.remove('input-invalid'));
 }
 
 function showErrors(form, errors) {
@@ -14,6 +15,9 @@ function showErrors(form, errors) {
             el.textContent = messages[0];
             el.classList.remove('hidden');
         }
+
+        const input = form.querySelector(`[name="${field}"]`);
+        if (input) input.classList.add('input-invalid');
     });
 }
 

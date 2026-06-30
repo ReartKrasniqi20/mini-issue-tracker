@@ -1,10 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
+        <x-back-link :href="route('projects.show', $project)" class="mb-2">Back to project</x-back-link>
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Issues <span class="text-gray-400">·</span> <span class="text-gray-500">{{ $project->name }}</span>
             </h2>
-            <a href="{{ route('projects.issues.create', $project) }}"><x-primary-button>New issue</x-primary-button></a>
+            <a href="{{ route('projects.issues.create', $project) }}"><x-primary-button><x-icon name="plus" class="mr-1.5" />New issue</x-primary-button></a>
         </div>
     </x-slot>
 

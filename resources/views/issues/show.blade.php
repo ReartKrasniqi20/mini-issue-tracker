@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+        <x-back-link :href="route('projects.issues.index', $project)" class="mb-2">Back to issues</x-back-link>
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $issue->title }}</h2>
             <div class="flex items-center gap-3">
@@ -67,16 +68,16 @@
             <div class="bg-white shadow-sm sm:rounded-lg p-6" id="comments" data-issue-id="{{ $issue->id }}">
                 <h3 class="font-medium text-gray-700 mb-4">Comments (<span id="comments-count">{{ $issue->comments_count }}</span>)</h3>
 
-                <form id="comment-form" class="space-y-3 mb-6">
+                <form id="comment-form" class="space-y-3 mb-6" novalidate>
                     <div>
                         <x-input-label for="body" value="Add a comment" />
-                        <textarea id="body" name="body" rows="3"
+                        <textarea id="body" name="body" rows="3" placeholder="Write a comment…"
                                   class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                         <p class="mt-1 text-sm text-red-600 hidden" data-error="body"></p>
                     </div>
                     <div class="flex items-center justify-between">
                         <span class="text-xs text-gray-400">Commenting as {{ auth()->user()->name }}</span>
-                        <x-primary-button>Add comment</x-primary-button>
+                        <x-primary-button><x-icon name="plus" class="mr-1.5" />Add comment</x-primary-button>
                     </div>
                 </form>
 
