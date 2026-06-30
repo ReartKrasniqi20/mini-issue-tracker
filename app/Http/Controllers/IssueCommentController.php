@@ -14,7 +14,7 @@ class IssueCommentController extends Controller
         $comments = $issue->comments()->latest()->paginate(5);
 
         $html = $comments
-            ->map(fn (Comment $comment) => view('comments._comment', compact('comment'))->render())
+            ->map(fn (Comment $comment) => view('comments.comment', compact('comment'))->render())
             ->implode('');
 
         return response()->json([
@@ -29,7 +29,7 @@ class IssueCommentController extends Controller
         $comment = $issue->comments()->create($request->validated());
 
         return response()->json([
-            'html' => view('comments._comment', compact('comment'))->render(),
+            'html' => view('comments.comment', compact('comment'))->render(),
             'total' => $issue->comments()->count(),
         ], 201);
     }

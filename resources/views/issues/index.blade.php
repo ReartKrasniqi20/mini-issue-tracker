@@ -13,10 +13,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <x-flash />
 
-            @include('issues._filters')
+            @include('issues.filters')
 
             <div id="issue-list">
-                @include('issues._list')
+                @include('issues.list')
             </div>
         </div>
     </div>

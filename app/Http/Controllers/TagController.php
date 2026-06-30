@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTagRequest;
 use App\Models\Tag;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -14,6 +15,16 @@ class TagController extends Controller
         $tags = Tag::withCount('issues')->orderBy('name')->get();
 
         return view('tags.index', compact('tags'));
+    }
+
+    public function options(): JsonResponse
+    {
+        return response()->json([
+            'tags' => Tag::query()
+                ->select(['id', 'name', 'color'])
+                ->orderBy('name')
+                ->get(),
+        ]);
     }
 
     public function store(StoreTagRequest $request): RedirectResponse

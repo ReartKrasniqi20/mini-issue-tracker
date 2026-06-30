@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateIssueRequest;
 use App\Models\Issue;
 use App\Models\Project;
 use App\Models\Tag;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -32,7 +31,7 @@ class IssueController extends Controller
 
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json([
-                'html' => view('issues._list', compact('issues', 'project'))->render(),
+                'html' => view('issues.list', compact('issues', 'project'))->render(),
             ]);
         }
 
@@ -73,8 +72,6 @@ class IssueController extends Controller
         return view('issues.show', [
             'project' => $project,
             'issue' => $issue,
-            'allTags' => Tag::orderBy('name')->get(),
-            'allUsers' => User::orderBy('name')->get(),
         ]);
     }
 

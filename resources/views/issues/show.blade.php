@@ -93,6 +93,6 @@
         </div>
     </div>
 
-    @include('issues._tag-manager')
-    @include('issues._members')
+    @include('issues.tag-manager')
+    @include('issues.members')
 </x-app-layout>
