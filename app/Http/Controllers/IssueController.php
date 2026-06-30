@@ -62,12 +62,9 @@ class IssueController extends Controller
         $issue->setRelation('project', $project);
         $issue->load(['tags', 'members'])->loadCount('comments');
 
-        $comments = $issue->comments()->latest()->paginate(5);
-
         return view('issues.show', [
             'project' => $project,
             'issue' => $issue,
-            'comments' => $comments,
             'allTags' => Tag::orderBy('name')->get(),
         ]);
     }

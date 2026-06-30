@@ -59,22 +59,32 @@
                 </div>
             </div>
 
-            <div class="bg-white shadow-sm sm:rounded-lg p-6">
-                <h3 class="font-medium text-gray-700 mb-4">Comments ({{ $issue->comments_count }})</h3>
+            <div class="bg-white shadow-sm sm:rounded-lg p-6" id="comments" data-issue-id="{{ $issue->id }}">
+                <h3 class="font-medium text-gray-700 mb-4">Comments (<span id="comments-count">{{ $issue->comments_count }}</span>)</h3>
 
-                <div class="space-y-4">
-                    @forelse ($comments as $comment)
-                        <div class="border-b last:border-0 pb-3">
-                            <div class="text-sm font-medium text-gray-800">{{ $comment->author_name }}</div>
-                            <div class="text-gray-700 whitespace-pre-line">{{ $comment->body }}</div>
-                            <div class="text-xs text-gray-400 mt-1">{{ $comment->created_at->diffForHumans() }}</div>
-                        </div>
-                    @empty
-                        <p class="text-gray-400">No comments yet.</p>
-                    @endforelse
+                <form id="comment-form" class="space-y-3 mb-6">
+                    <div>
+                        <x-input-label for="author_name" value="Your name" />
+                        <x-text-input id="author_name" name="author_name" type="text" class="mt-1 block w-full" />
+                        <p class="mt-1 text-sm text-red-600 hidden" data-error="author_name"></p>
+                    </div>
+                    <div>
+                        <x-input-label for="body" value="Comment" />
+                        <textarea id="body" name="body" rows="3"
+                                  class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
+                        <p class="mt-1 text-sm text-red-600 hidden" data-error="body"></p>
+                    </div>
+                    <x-primary-button>Add comment</x-primary-button>
+                </form>
+
+                <div id="comments-list" class="space-y-4"></div>
+
+                <p id="comments-empty" class="text-gray-400 hidden">No comments yet.</p>
+                <div class="mt-4">
+                    <button type="button" id="load-more-comments" class="text-indigo-600 hover:underline hidden">
+                        Load more comments
+                    </button>
                 </div>
-
-                <div class="mt-4">{{ $comments->links() }}</div>
             </div>
         </div>
     </div>
