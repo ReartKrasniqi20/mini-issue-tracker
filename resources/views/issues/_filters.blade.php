@@ -8,7 +8,7 @@
 
     <div>
         <x-input-label for="status" value="Status" />
-        <select id="status" name="status" class="mt-1 block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+        <select id="status" name="status" class="mt-1 block border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm">
             <option value="">All</option>
             @foreach ($statuses as $status)
                 <option value="{{ $status->value }}" @selected(($filters['status'] ?? '') === $status->value)>{{ $status->label() }}</option>
@@ -18,7 +18,7 @@
 
     <div>
         <x-input-label for="priority" value="Priority" />
-        <select id="priority" name="priority" class="mt-1 block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+        <select id="priority" name="priority" class="mt-1 block border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm">
             <option value="">All</option>
             @foreach ($priorities as $priority)
                 <option value="{{ $priority->value }}" @selected(($filters['priority'] ?? '') === $priority->value)>{{ $priority->label() }}</option>
@@ -28,7 +28,7 @@
 
     <div>
         <x-input-label for="tag" value="Tag" />
-        <select id="tag" name="tag" class="mt-1 block border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+        <select id="tag" name="tag" class="mt-1 block border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm">
             <option value="">All</option>
             @foreach ($tags as $tag)
                 <option value="{{ $tag->id }}" @selected((string) ($filters['tag'] ?? '') === (string) $tag->id)>{{ $tag->name }}</option>

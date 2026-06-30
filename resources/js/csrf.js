@@ -1,5 +1,3 @@
-// Small fetch wrapper: attaches CSRF token + JSON headers, and throws an
-// error carrying { status, data } so callers can handle 422 validation.
 export async function request(url, options = {}) {
     const token = document.querySelector('meta[name="csrf-token"]')?.content;
 
@@ -19,7 +17,6 @@ export async function request(url, options = {}) {
     try {
         data = await response.json();
     } catch (e) {
-        // no JSON body
     }
 
     if (!response.ok) {

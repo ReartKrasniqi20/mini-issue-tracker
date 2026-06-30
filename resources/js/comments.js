@@ -62,18 +62,18 @@ export function initComments() {
                 }),
             });
 
-            list.insertAdjacentHTML('afterbegin', data.html); // prepend new comment
-            form.reset();                                       // clear the form
+            list.insertAdjacentHTML('afterbegin', data.html);
+            form.reset();
             countEl.textContent = data.total;
             emptyMsg.classList.add('hidden');
         } catch (err) {
             if (err.status === 422 && err.data?.errors) {
-                showErrors(form, err.data.errors);              // inline errors, no alert
+                showErrors(form, err.data.errors);
             }
         } finally {
             submitBtn.disabled = false;
         }
     });
 
-    loadPage(1); // initial AJAX load
+    loadPage(1);
 }

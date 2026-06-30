@@ -7,18 +7,14 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen lg:grid lg:grid-cols-2">
-            <!-- Brand panel -->
             <div class="relative hidden overflow-hidden bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 p-12 text-white lg:flex lg:flex-col lg:justify-between">
-                <!-- Decorative glow -->
                 <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/10 blur-3xl"></div>
                 <div class="pointer-events-none absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-violet-400/20 blur-3xl"></div>
 
@@ -58,10 +54,8 @@
                 <p class="relative text-xs text-indigo-200/70">© {{ date('Y') }} Mini Issue Tracker</p>
             </div>
 
-            <!-- Form panel -->
             <div class="flex min-h-screen items-center justify-center bg-gray-50 px-6 py-12">
                 <div class="w-full max-w-md">
-                    <!-- Logo (mobile) -->
                     <a href="{{ route('login') }}" class="mb-8 flex items-center justify-center gap-3 lg:hidden">
                         <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600">
                             <img src="{{ asset('images/svg/logo.svg') }}" alt="" class="h-6 w-6 brightness-0 invert">

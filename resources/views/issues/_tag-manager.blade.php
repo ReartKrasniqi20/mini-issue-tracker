@@ -7,7 +7,7 @@
             @forelse ($allTags as $tag)
                 <label class="flex items-center gap-3 cursor-pointer">
                     <input type="checkbox"
-                           class="tag-checkbox rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                           class="tag-checkbox issue-manager-checkbox rounded border-black text-gray-900 focus:ring-0 focus:ring-offset-0"
                            data-tag-id="{{ $tag->id }}"
                            data-tag-name="{{ $tag->name }}"
                            data-tag-color="{{ $tag->color }}"

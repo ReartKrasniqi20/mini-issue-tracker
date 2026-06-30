@@ -10,7 +10,6 @@
 <nav x-data="{ open: false }" class="sticky top-0 z-40 border-b border-gray-200 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
-            <!-- Left: nav links -->
             <div class="flex items-center">
                 <div class="hidden sm:flex sm:gap-6">
                     <x-nav-item :href="route('projects.index')" :active="request()->routeIs('projects.*')">
@@ -22,14 +21,12 @@
                 </div>
             </div>
 
-            <!-- Center: brand -->
             <a href="{{ route('projects.index') }}"
                class="absolute inset-y-0 left-1/2 flex -translate-x-1/2 items-center gap-2">
                 <img src="{{ asset('images/svg/logo.svg') }}" alt="Issue Tracker" class="h-8 w-auto">
                 <span class="text-base font-semibold text-gray-900">Issue Tracker</span>
             </a>
 
-            <!-- Right: user menu (desktop) / hamburger (mobile) -->
             <div class="flex items-center">
                 <div class="hidden sm:block">
                     <x-dropdown align="right" width="48">
@@ -75,7 +72,6 @@
         </div>
     </div>
 
-    <!-- Mobile menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden border-t border-gray-200 sm:hidden">
         <div class="space-y-1 px-3 py-3">
             <a href="{{ route('projects.index') }}"

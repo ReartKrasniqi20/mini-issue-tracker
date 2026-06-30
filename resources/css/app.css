@@ -2,19 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Invalid form fields — red border + red focus ring, project-wide */
 .input-invalid {
     border-color: rgb(239 68 68) !important;
     --tw-ring-color: rgb(239 68 68) !important;
 }
 
-/* Coloris color field — override its bundled CSS to show a clean rounded chip.
-   !important is required because Coloris ships its own stylesheet that loads after ours. */
+.issue-manager-checkbox {
+    border-color: rgb(0 0 0) !important;
+    box-shadow: none !important;
+}
 
-/* Coloris resets the inner input's margin to 0 (`.clr-field input { margin: 0 }`,
-   which out-specifies Tailwind's mt-1), so the field sits higher than sibling
-   block inputs. Make the wrapper a block sized to the input and carry the top
-   margin there instead, so the column lines up with the others. */
+.issue-manager-checkbox:focus {
+    border-color: rgb(0 0 0) !important;
+    box-shadow: none !important;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.issue-manager-checkbox:checked {
+    background-color: rgb(17 24 39) !important;
+    border-color: rgb(0 0 0) !important;
+}
+
 .clr-field {
     display: block !important;
     width: fit-content;

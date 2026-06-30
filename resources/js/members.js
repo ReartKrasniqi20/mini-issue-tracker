@@ -41,7 +41,7 @@ export function initMemberManager() {
                 }
                 renderMembers(badges, checkboxes);
             } catch (e) {
-                cb.checked = !cb.checked; // revert on failure
+                cb.checked = !cb.checked;
             } finally {
                 cb.disabled = false;
             }

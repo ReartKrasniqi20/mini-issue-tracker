@@ -20,20 +20,16 @@ export function initIssueFilters() {
             const data = await request(`${form.action}?${params}`);
             list.innerHTML = data.html;
         } catch (e) {
-            // leave the current list in place on error
         }
     }
 
-    // Submit (Enter / Filter button) -> AJAX instead of full reload
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         refresh();
     });
 
-    // Debounced text search (~300ms)
     form.querySelector('[name="q"]')?.addEventListener('input', debounce(refresh, 300));
 
-    // Status / priority / tag selects refresh immediately
     form.querySelectorAll('select').forEach((select) => {
         select.addEventListener('change', refresh);
     });

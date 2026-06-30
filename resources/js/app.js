@@ -11,8 +11,6 @@ window.Alpine = Alpine;
 Alpine.start();
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Defer to server-side validation everywhere; skip native browser popups
-    // so our own red field styling + messages are what the user sees.
     document.querySelectorAll('form').forEach((form) => {
         form.noValidate = true;
     });

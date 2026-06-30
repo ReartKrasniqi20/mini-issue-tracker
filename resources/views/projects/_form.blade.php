@@ -16,7 +16,7 @@
     <div>
         <x-input-label for="description" value="Description" />
         <textarea id="description" name="description" rows="4" placeholder="What is this project about?"
-                  class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm @error('description') input-invalid @enderror">{{ old('description', $project->description) }}</textarea>
+                  class="mt-1 block w-full border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm @error('description') input-invalid @enderror">{{ old('description', $project->description) }}</textarea>
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
     </div>
 

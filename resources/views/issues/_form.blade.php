@@ -16,14 +16,14 @@
     <div>
         <x-input-label for="description" value="Description" />
         <textarea id="description" name="description" rows="5" placeholder="Describe the issue, steps to reproduce, expected vs actual…"
-                  class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm @error('description') input-invalid @enderror">{{ old('description', $issue->description) }}</textarea>
+                  class="mt-1 block w-full border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm @error('description') input-invalid @enderror">{{ old('description', $issue->description) }}</textarea>
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
             <x-input-label for="status" value="Status" />
-            <select id="status" name="status" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm @error('status') input-invalid @enderror">
+            <select id="status" name="status" class="mt-1 block w-full border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm @error('status') input-invalid @enderror">
                 @foreach ($statuses as $status)
                     <option value="{{ $status->value }}" @selected(old('status', $issue->status?->value) === $status->value)>{{ $status->label() }}</option>
                 @endforeach
@@ -32,7 +32,7 @@
         </div>
         <div>
             <x-input-label for="priority" value="Priority" />
-            <select id="priority" name="priority" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm @error('priority') input-invalid @enderror">
+            <select id="priority" name="priority" class="mt-1 block w-full border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm @error('priority') input-invalid @enderror">
                 @foreach ($priorities as $priority)
                     <option value="{{ $priority->value }}" @selected(old('priority', $issue->priority?->value) === $priority->value)>{{ $priority->label() }}</option>
                 @endforeach

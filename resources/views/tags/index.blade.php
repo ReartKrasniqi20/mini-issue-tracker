@@ -37,13 +37,6 @@
                         <x-tag-badge :tag="$tag" />
                         <div class="flex items-center gap-4">
                             <span class="text-sm text-gray-500">{{ $tag->issues_count }} issues</span>
-                            <a href="{{ route('tags.edit', $tag) }}" class="text-sm text-gray-500 hover:text-gray-700">Edit</a>
-                            <form method="POST" action="{{ route('tags.destroy', $tag) }}" class="inline"
-                                  onsubmit="return confirm('Delete this tag?')">
-                                @csrf
-                                @method('DELETE')
-                                <button class="text-sm text-red-500 hover:text-red-700">Delete</button>
-                            </form>
                         </div>
                     </div>
                 @empty

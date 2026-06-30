@@ -72,7 +72,7 @@
                     <div>
                         <x-input-label for="body" value="Add a comment" />
                         <textarea id="body" name="body" rows="3" placeholder="Write a comment…"
-                                  class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
+                                  class="mt-1 block w-full border-gray-300 focus:border-gray-400 focus:ring-0 rounded-md shadow-sm"></textarea>
                         <p class="mt-1 text-sm text-red-600 hidden" data-error="body"></p>
                     </div>
                     <div class="flex items-center justify-between">
