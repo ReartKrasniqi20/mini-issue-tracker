@@ -36,8 +36,8 @@
         </select>
     </div>
 
-    <div class="flex items-center gap-2">
-        <x-primary-button>Filter</x-primary-button>
-        <a href="{{ route('projects.issues.index', $project) }}" class="text-gray-500 hover:text-gray-700">Reset</a>
+    <div>
+        <a href="{{ route('projects.issues.index', $project) }}"
+           class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white h-10 px-4 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50">Reset</a>
     </div>
 </form>

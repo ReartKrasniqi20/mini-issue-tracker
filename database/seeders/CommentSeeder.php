@@ -11,7 +11,7 @@ class CommentSeeder extends Seeder
     public function run(): void
     {
         Issue::all()->each(
-            fn (Issue $issue) => Comment::factory(random_int(2, 6))->for($issue)->create()
+            fn (Issue $issue) => Comment::factory(random_int(2, 9))->for($issue)->create()
         );
     }
 }

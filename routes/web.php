@@ -15,6 +15,14 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('projects/trash', [ProjectController::class, 'trash'])->name('projects.trash');
+    Route::patch('projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore')->withTrashed();
+    Route::delete('projects/{project}/force', [ProjectController::class, 'forceDelete'])->name('projects.force')->withTrashed();
+
+    Route::get('projects/{project}/issues/trash', [IssueController::class, 'trash'])->name('projects.issues.trash');
+    Route::patch('issues/{issue}/restore', [IssueController::class, 'restore'])->name('issues.restore')->withTrashed();
+    Route::delete('issues/{issue}/force', [IssueController::class, 'forceDelete'])->name('issues.force')->withTrashed();
+
     Route::resource('projects', ProjectController::class);
     Route::resource('projects.issues', IssueController::class)->scoped();
 

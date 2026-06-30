@@ -100,6 +100,39 @@ class IssueController extends Controller
 
         return redirect()
             ->route('projects.issues.index', $project)
-            ->with('status', 'Issue deleted.');
+            ->with('status', 'Issue deleted.')
+            ->with('undo', route('issues.restore', $issue));
+    }
+
+    public function trash(Project $project): View
+    {
+        $issues = $project->issues()
+            ->onlyTrashed()
+            ->with('tags')
+            ->withCount('comments')
+            ->latest('deleted_at')
+            ->paginate(10);
+
+        return view('issues.trash', compact('project', 'issues'));
+    }
+
+    public function restore(Issue $issue): RedirectResponse
+    {
+        $issue->restore();
+
+        return redirect()
+            ->route('projects.issues.trash', $issue->project_id)
+            ->with('status', 'Issue restored.');
+    }
+
+    public function forceDelete(Issue $issue): RedirectResponse
+    {
+        $projectId = $issue->project_id;
+
+        $issue->forceDelete();
+
+        return redirect()
+            ->route('projects.issues.trash', $projectId)
+            ->with('status', 'Issue permanently deleted.');
     }
 }

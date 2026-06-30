@@ -5,6 +5,7 @@ import { initComments } from './comments';
 import { initMemberManager } from './members';
 import { initIssueFilters } from './issue-filters';
 import { initColorPicker } from './color-picker';
+import { initClickableRows } from './clickable-rows';
 
 window.Alpine = Alpine;
 
@@ -20,4 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMemberManager();
     initIssueFilters();
     initColorPicker();
+    initClickableRows();
 });

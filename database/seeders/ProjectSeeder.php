@@ -10,7 +10,7 @@ class ProjectSeeder extends Seeder
 {
     public function run(): void
     {
-        Project::factory(6)
+        Project::factory(14)
             ->recycle(User::all())
             ->create();
     }

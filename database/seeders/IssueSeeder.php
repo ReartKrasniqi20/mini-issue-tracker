@@ -16,7 +16,7 @@ class IssueSeeder extends Seeder
         $users = User::all();
 
         Project::all()->each(function (Project $project) use ($tags, $users) {
-            Issue::factory(random_int(4, 8))
+            Issue::factory(random_int(6, 14))
                 ->for($project)
                 ->create()
                 ->each(function (Issue $issue) use ($tags, $users) {

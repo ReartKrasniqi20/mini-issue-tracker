@@ -35,9 +35,10 @@
                 <div>
                     <div class="flex items-center justify-between mb-1">
                         <div class="text-xs font-medium text-gray-500 uppercase">Tags</div>
-                        <x-secondary-button type="button" x-data="" x-on:click.prevent="$dispatch('open-modal', 'manage-tags')">
+                        <button type="button" x-data="" x-on:click.prevent="$dispatch('open-modal', 'manage-tags')"
+                                class="inline-flex items-center justify-center rounded-lg border border-indigo-200 bg-indigo-50 h-10 px-4 text-sm font-medium text-indigo-700 transition-colors hover:bg-indigo-100">
                             Manage tags
-                        </x-secondary-button>
+                        </button>
                     </div>
                     <div id="issue-tags" class="flex flex-wrap gap-2">
                         @forelse ($issue->tags as $tag)
@@ -51,9 +52,10 @@
                 <div>
                     <div class="flex items-center justify-between mb-1">
                         <div class="text-xs font-medium text-gray-500 uppercase">Members</div>
-                        <x-secondary-button type="button" x-data="" x-on:click.prevent="$dispatch('open-modal', 'manage-members')">
+                        <button type="button" x-data="" x-on:click.prevent="$dispatch('open-modal', 'manage-members')"
+                                class="inline-flex items-center justify-center rounded-lg border border-indigo-200 bg-indigo-50 h-10 px-4 text-sm font-medium text-indigo-700 transition-colors hover:bg-indigo-100">
                             Manage members
-                        </x-secondary-button>
+                        </button>
                     </div>
                     <div id="issue-members" class="flex flex-wrap gap-2">
                         @forelse ($issue->members as $member)

@@ -1,6 +1,7 @@
 <div class="bg-white shadow-sm sm:rounded-lg">
     @forelse ($issues as $issue)
-        <div class="px-6 py-4 border-b last:border-0 flex items-center justify-between">
+        <div data-row-href="{{ route('projects.issues.show', [$project, $issue]) }}"
+             class="px-6 py-4 border-b last:border-0 flex items-center justify-between cursor-pointer transition-colors hover:bg-gray-50">
             <div>
                 <a href="{{ route('projects.issues.show', [$project, $issue]) }}" class="font-medium text-indigo-600 hover:underline">{{ $issue->title }}</a>
                 <div class="mt-1 flex flex-wrap items-center gap-2">

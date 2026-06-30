@@ -13,19 +13,19 @@
                     @csrf
                     <div>
                         <x-input-label for="name" value="Name" />
-                        <x-text-input id="name" name="name" type="text" class="mt-1 block w-56 h-11"
+                        <x-text-input id="name" name="name" type="text" class="mt-1 block w-56 h-10"
                                       :value="old('name')" placeholder="e.g. backend, urgent" required />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
                     <div>
                         <x-input-label for="color" value="Color" />
                         <x-text-input id="color" name="color" type="text" data-coloris readonly
-                                      class="mt-1 block w-36 cursor-pointer pr-10 h-11" :value="old('color', '#6b7280')" />
+                                      class="mt-1 block w-36 cursor-pointer pr-10 h-10" :value="old('color', '#6b7280')" />
                         <x-input-error :messages="$errors->get('color')" class="mt-2" />
                     </div>
                     <div>
                         <x-input-label class="invisible" aria-hidden="true">Add</x-input-label>
-                        <x-primary-button class="mt-1 h-11"><x-icon name="plus" class="mr-1.5" />Add tag</x-primary-button>
+                        <x-primary-button class="mt-1"><x-icon name="plus" class="mr-1.5" />Add tag</x-primary-button>
                     </div>
                 </form>
             </div>
@@ -43,6 +43,8 @@
                     <div class="px-6 py-4 text-gray-500">No tags yet. Add your first one above.</div>
                 @endforelse
             </div>
+
+            <div>{{ $tags->links() }}</div>
         </div>
     </div>
 </x-app-layout>

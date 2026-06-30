@@ -5,7 +5,11 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Issues <span class="text-gray-400">·</span> <span class="text-gray-500">{{ $project->name }}</span>
             </h2>
-            <a href="{{ route('projects.issues.create', $project) }}"><x-primary-button><x-icon name="plus" class="mr-1.5" />New issue</x-primary-button></a>
+            <div class="flex items-center gap-4">
+                <a href="{{ route('projects.issues.trash', $project) }}"
+                   class="inline-flex items-center rounded-lg border border-red-200 bg-red-50 h-10 px-4 text-sm font-medium text-red-600 transition-colors hover:bg-red-100">Deleted issues</a>
+                <a href="{{ route('projects.issues.create', $project) }}"><x-primary-button><x-icon name="plus" class="mr-1.5" />New issue</x-primary-button></a>
+            </div>
         </div>
     </x-slot>
 

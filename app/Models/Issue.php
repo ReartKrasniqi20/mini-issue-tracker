@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['project_id', 'title', 'description', 'status', 'priority', 'due_date'])]
 class Issue extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected function casts(): array
     {

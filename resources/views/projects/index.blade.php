@@ -2,9 +2,13 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Projects') }}</h2>
-            <a href="{{ route('projects.create') }}">
-                <x-primary-button><x-icon name="plus" class="mr-1.5" />New Project</x-primary-button>
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="{{ route('projects.trash') }}"
+                   class="inline-flex items-center rounded-lg border border-red-200 bg-red-50 h-10 px-4 text-sm font-medium text-red-600 transition-colors hover:bg-red-100">Deleted projects</a>
+                <a href="{{ route('projects.create') }}">
+                    <x-primary-button><x-icon name="plus" class="mr-1.5" />New Project</x-primary-button>
+                </a>
+            </div>
         </div>
     </x-slot>
 
@@ -28,11 +32,10 @@
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             @foreach ($projects as $project)
-                                <tr>
+                                <tr data-row-href="{{ route('projects.show', $project) }}"
+                                    class="cursor-pointer transition-colors hover:bg-gray-50">
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('projects.show', $project) }}" class="font-medium text-indigo-600 hover:underline">
-                                            {{ $project->name }}
-                                        </a>
+                                        <a href="{{ route('projects.show', $project) }}" class="font-medium text-indigo-600 hover:underline">{{ $project->name }}</a>
                                     </td>
                                     <td class="px-6 py-4 text-gray-600">{{ $project->owner?->name ?? '—' }}</td>
                                     <td class="px-6 py-4 text-gray-600">{{ $project->issues_count }}</td>

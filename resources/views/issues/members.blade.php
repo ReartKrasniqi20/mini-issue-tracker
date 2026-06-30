@@ -1,7 +1,7 @@
 <x-modal name="manage-members" focusable>
     <div class="p-6">
         <h2 class="text-lg font-medium text-gray-900">Manage members</h2>
-        <p class="mt-1 text-sm text-gray-600">Check to assign, uncheck to remove — saves instantly, no reload.</p>
+        <p class="mt-1 text-sm text-gray-600">Check to assign, uncheck to remove. Changes save instantly.</p>
 
         <div id="member-manager"
              data-issue-id="{{ $issue->id }}"

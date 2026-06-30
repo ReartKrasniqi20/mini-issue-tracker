@@ -46,6 +46,7 @@ class ProjectController extends Controller
             ->with('tags')
             ->withCount('comments')
             ->latest()
+            ->limit(5)
             ->get();
 
         return view('projects.show', compact('project', 'issues'));
@@ -77,6 +78,40 @@ class ProjectController extends Controller
 
         return redirect()
             ->route('projects.index')
-            ->with('status', 'Project deleted.');
+            ->with('status', 'Project deleted.')
+            ->with('undo', route('projects.restore', $project));
+    }
+
+    public function trash(): View
+    {
+        $projects = Project::onlyTrashed()
+            ->with('owner')
+            ->withCount(['issues' => fn ($query) => $query->withTrashed()])
+            ->latest('deleted_at')
+            ->paginate(10);
+
+        return view('projects.trash', compact('projects'));
+    }
+
+    public function restore(Project $project): RedirectResponse
+    {
+        $this->authorize('restore', $project);
+
+        $project->restore();
+
+        return redirect()
+            ->route('projects.index')
+            ->with('status', 'Project restored.');
+    }
+
+    public function forceDelete(Project $project): RedirectResponse
+    {
+        $this->authorize('forceDelete', $project);
+
+        $project->forceDelete();
+
+        return redirect()
+            ->route('projects.trash')
+            ->with('status', 'Project permanently deleted.');
     }
 }

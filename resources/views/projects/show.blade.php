@@ -34,7 +34,8 @@
             <div class="bg-white shadow-sm sm:rounded-lg">
                 <div class="px-6 py-4 border-b font-medium text-gray-700">Issues</div>
                 @forelse ($issues as $issue)
-                    <div class="px-6 py-4 border-b last:border-0 flex items-center justify-between">
+                    <div data-row-href="{{ route('projects.issues.show', [$project, $issue]) }}"
+                         class="px-6 py-4 border-b last:border-0 flex items-center justify-between cursor-pointer transition-colors hover:bg-gray-50">
                         <div>
                             <a href="{{ route('projects.issues.show', [$project, $issue]) }}" class="font-medium text-indigo-600 hover:underline">{{ $issue->title }}</a>
                             <div class="mt-1 flex flex-wrap items-center gap-2">
@@ -50,6 +51,13 @@
                 @empty
                     <div class="px-6 py-4 text-gray-500">No issues yet.</div>
                 @endforelse
+
+                @if ($project->issues_count > $issues->count())
+                    <a href="{{ route('projects.issues.index', $project) }}"
+                       class="block border-t px-6 py-3 text-center text-sm font-medium text-indigo-600 hover:bg-gray-50">
+                        View all {{ $project->issues_count }} issues
+                    </a>
+                @endif
             </div>
         </div>
     </div>
